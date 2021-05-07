@@ -21,7 +21,8 @@ config :phoenix_rpg, PhoenixRpgWeb.Endpoint,
 # Configures pow for authentication/authorization
 config :phoenix_rpg, :pow,
   user: PhoenixRpg.Users.User,
-  repo: PhoenixRpg.Repo
+  repo: PhoenixRpg.Repo,
+  web_module: PhoenixRpgWeb
 
 # Configures Elixir's Logger
 config :logger, :console,
