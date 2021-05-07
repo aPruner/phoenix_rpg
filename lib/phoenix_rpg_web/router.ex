@@ -27,7 +27,7 @@ defmodule PhoenixRpgWeb.Router do
   end
 
   scope "/", PhoenixRpgWeb do
-    pipe_through :browser
+    pipe_through [:browser, :protected]
 
     get "/", PageController, :index
     resources "/users", UserController

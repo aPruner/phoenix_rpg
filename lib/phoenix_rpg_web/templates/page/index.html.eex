@@ -2,5 +2,8 @@
   <h1>
     Hello, this is the home page!
   </h1>
+  <%= if Pow.Plug.current_user(@conn) do %>
+    <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
+  <% end %>
 </section>
 
