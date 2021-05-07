@@ -1,5 +1,6 @@
 defmodule PhoenixRpgWeb.Router do
   use PhoenixRpgWeb, :router
+  use Pow.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -10,8 +11,19 @@ defmodule PhoenixRpgWeb.Router do
     plug PhoenixRpgWeb.Plugs.Locale, "en"
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
+  # pipeline :api do
+  #   plug :accepts, ["json"]
+  # end
+
+  scope "/" do
+    pipe_through :browser
+
+    pow_routes()
   end
 
   scope "/", PhoenixRpgWeb do

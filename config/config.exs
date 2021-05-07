@@ -18,6 +18,11 @@ config :phoenix_rpg, PhoenixRpgWeb.Endpoint,
   pubsub_server: PhoenixRpg.PubSub,
   live_view: [signing_salt: "oR3SQAeX"]
 
+# Configures pow for authentication/authorization
+config :phoenix_rpg, :pow,
+  user: PhoenixRpg.Users.User,
+  repo: PhoenixRpg.Repo
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

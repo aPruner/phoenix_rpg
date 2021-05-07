@@ -3,6 +3,7 @@ defmodule PhoenixRpgWeb.UserController do
 
   def index(conn, %{"name" => name, "age" => age}) do
     conn
+    |> put_flash(:info, "Here is a flash message! Maybe this is a toast?")
     |> assign(:name, name)
     |> assign(:age, age)
     |> render("index.html")
