@@ -16,20 +16,10 @@ defmodule PhoenixRpgWeb.Router do
       error_handler: Pow.Phoenix.PlugErrorHandler
   end
 
-  # pipeline :api do
-  #   plug :accepts, ["json"]
-  # end
-
   scope "/" do
     pipe_through :browser
 
     pow_routes()
-  end
-
-  scope "/", PhoenixRpgWeb do
-    pipe_through [:protected]
-
-    resources "/characters", CharacterController
   end
 
   scope "/", PhoenixRpgWeb do
@@ -38,11 +28,10 @@ defmodule PhoenixRpgWeb.Router do
     get "/", HomeController, :index
   end
 
-
-  # Other scopes may use custom stacks.
-  # scope "/api", PhoenixRpgWeb do
-  #   pipe_through :api
-  # end
+  scope "/", PhoenixRpgWeb do
+    pipe_through [:browser, :protected]
+    resources "/characters", CharacterController
+  end
 
   # Enables LiveDashboard only for development
   #
