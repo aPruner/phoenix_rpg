@@ -1,9 +1,11 @@
 <section class="phx-hero">
   <h1>
-    Hello, this is the home page!
+    Hello, this is the home page! <%= if Pow.Plug.current_user(@conn) do %> You're logged in! <% else %> You're not logged in! <% end %>
   </h1>
   <%= if Pow.Plug.current_user(@conn) do %>
     <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
+  <% else %>
+    <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new)%></span>
   <% end %>
 </section>
 
