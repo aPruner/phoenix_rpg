@@ -1,4 +1,4 @@
-defmodule PhoenixRpgWeb.PageController do
+defmodule PhoenixRpgWeb.HomeController do
   use PhoenixRpgWeb, :controller
 
   def index(conn, _params) do

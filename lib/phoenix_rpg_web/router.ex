@@ -27,10 +27,15 @@ defmodule PhoenixRpgWeb.Router do
   end
 
   scope "/", PhoenixRpgWeb do
+    pipe_through [:protected]
+
+    resources "/characters", CharacterController
+  end
+
+  scope "/", PhoenixRpgWeb do
     pipe_through [:browser]
 
-    get "/", PageController, :index
-    resources "/users", UserController
+    get "/", HomeController, :index
   end
 
 

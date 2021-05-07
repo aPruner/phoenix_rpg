@@ -2,6 +2,9 @@
   <h1>
     Hello, this is the home page! <%= if Pow.Plug.current_user(@conn) do %> You're logged in! <% else %> You're not logged in! <% end %>
   </h1>
+  <%= if Pow.Plug.current_user(@conn) do %> 
+    <span><%= link "New Character", to: "/characters/new" %></span>
+  <% end %>
   <%= if Pow.Plug.current_user(@conn) do %>
     <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
   <% else %>

@@ -26,3 +26,4 @@
 
 
 <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
+<span class="home-link"><%= link "Home", to: "/" %></span>
