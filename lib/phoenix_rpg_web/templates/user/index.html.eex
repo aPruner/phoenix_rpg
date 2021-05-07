@@ -2,4 +2,13 @@
   <h1>
     Hello, this is a list of all users!
   </h1>
+  <p>
+    These are from url params:
+  </p>
+  <p>
+    name: <%= @name %>
+  </p>
+  <p>
+    age: <%= @age %>
+  </p>
 </section>

@@ -21,6 +21,7 @@ defmodule PhoenixRpgWeb.Router do
     resources "/users", UserController
   end
 
+
   # Other scopes may use custom stacks.
   # scope "/api", PhoenixRpgWeb do
   #   pipe_through :api
