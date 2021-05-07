@@ -18,7 +18,7 @@ defmodule PhoenixRpgWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/user", PageController, :user
+    resources "/users", UserController
   end
 
   # Other scopes may use custom stacks.
