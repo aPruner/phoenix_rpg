@@ -13,7 +13,3 @@ import "../css/app.scss"
 //     import socket from "./socket"
 //
 import "phoenix_html"
-
-function logOut() {
-  // Call backend to log out
-}

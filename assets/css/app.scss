@@ -38,3 +38,17 @@
 .home-link {
   margin-left: 15px;
 }
+.attributes-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.stat {
+  margin: 0;
+}
+.stat-button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-size: 24px;
+}

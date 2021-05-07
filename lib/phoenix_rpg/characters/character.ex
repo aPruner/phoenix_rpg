@@ -20,5 +20,7 @@ defmodule PhoenixRpg.Characters.Character do
     character
     |> cast(attrs, [:name, :class, :level, :strength, :agility, :fortitude, :wisdom, :chance])
     |> validate_required([:name, :class, :level, :strength, :agility, :fortitude, :wisdom, :chance])
+    |> validate_length(:name, min: 8, max: 16)
+    |> validate_inclusion(:class, ["Fighter", "Wizard", "Assassin", "Cleric"])
   end
 end

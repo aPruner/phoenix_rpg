@@ -10,32 +10,37 @@
   <%= error_tag f, :name %>
 
   <%= label f, :class %>
-  <%= text_input f, :class %>
+  <%= select f, :class, ["Fighter", "Wizard", "Assassin", "Cleric"] %>
   <%= error_tag f, :class %>
 
-  <%= label f, :level %>
-  <%= number_input f, :level %>
-  <%= error_tag f, :level %>
-
-  <%= label f, :strength %>
-  <%= number_input f, :strength %>
-  <%= error_tag f, :strength %>
-
-  <%= label f, :agility %>
-  <%= number_input f, :agility %>
-  <%= error_tag f, :agility %>
-
-  <%= label f, :fortitude %>
-  <%= number_input f, :fortitude %>
-  <%= error_tag f, :fortitude %>
-
-  <%= label f, :wisdom %>
-  <%= number_input f, :wisdom %>
-  <%= error_tag f, :wisdom %>
-
-  <%= label f, :chance %>
-  <%= number_input f, :chance %>
-  <%= error_tag f, :chance %>
+  <%= label f, "Attributes" %>
+  <div class="attributes-container">
+    <div>
+      <p class="stat" id="str"><%= :strength %>: 10</p>
+      <button class="stat-button increment" onclick="increment()">+</button>
+      <button class="stat-button decrement" onclick="decrement()">-</button>
+    </div>
+    <div>
+      <p class="stat" id="agi"><%= :agility %>: 10</p>
+      <button class="stat-button increment" onclick="increment()">+</button>
+      <button class="stat-button decrement" onclick="decrement()">-</button>
+    </div>
+    <div>
+      <p class="stat" id="fort"><%= :fortitude %>: 10</p>
+      <button class="stat-button increment" onclick="increment()">+</button>
+      <button class="stat-button decrement" onclick="decrement()">-</button>
+    </div>
+    <div>
+      <p class="stat" id="wis"><%= :wisdom %>: 10</p>
+      <button class="stat-button increment" onclick="increment()">+</button>
+      <button class="stat-button decrement" onclick="decrement()">-</button>
+    </div>
+    <div>
+      <p class="stat" id="cha"><%= :chance %>: 10</p>
+      <button class="stat-button increment" onclick="increment()">+</button>
+      <button class="stat-button decrement" onclick="decrement()">-</button>
+    </div>
+  </div>
 
   <div>
     <%= submit "Save" %>

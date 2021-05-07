@@ -50,7 +50,7 @@ defmodule PhoenixRpg.Characters do
 
   """
   def create_character(attrs \\ %{}) do
-    %Character{}
+    %Character{level: 1}
     |> Character.changeset(attrs)
     |> Repo.insert()
   end
