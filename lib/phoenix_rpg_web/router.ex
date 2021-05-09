@@ -2,35 +2,31 @@ defmodule PhoenixRpgWeb.Router do
   use PhoenixRpgWeb, :router
   use Pow.Phoenix.Router
 
-  pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
-    plug PhoenixRpgWeb.Plugs.Locale, "en"
+  # pipeline :browser do
+  #   plug :accepts, ["json"]
+  #   plug :fetch_session
+  #   plug :fetch_flash
+  #   plug :protect_from_forgery
+  #   plug :put_secure_browser_headers
+  #   plug PhoenixRpgWeb.Plugs.Locale, "en"
+  # end
+
+  pipeline :api do
+    plug :accepts, ["json"]
+    # Commented this out since APIAuthPlug doesn't exist yet
+    # plug PhoenixRpgWeb.APIAuthPlug, otp_app: :my_app
   end
 
-  pipeline :protected do
-    plug Pow.Plug.RequireAuthenticated,
-      error_handler: Pow.Phoenix.PlugErrorHandler
+  pipeline :api_protected do
+    plug Pow.Plug.RequireAuthenticated, # error_handler: PhoenixRpgWeb.APIAuthErrorHandler
+    error_handler: Pow.Phoenix.PlugErrorHandler
   end
 
-  scope "/" do
-    pipe_through :browser
+  scope "/api/v1" do
+    pipe_through [:api, :api_protected]
 
     pow_routes()
-  end
-
-  scope "/", PhoenixRpgWeb do
-    pipe_through [:browser]
-
-    get "/", HomeController, :index
-  end
-
-  scope "/", PhoenixRpgWeb do
-    pipe_through [:browser, :protected]
-    resources "/characters", CharacterController
+    get "/characters", CharacterController, :index
   end
 
   # Enables LiveDashboard only for development
@@ -44,7 +40,7 @@ defmodule PhoenixRpgWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through :browser
+      pipe_through [:api_protected]
       live_dashboard "/dashboard", metrics: PhoenixRpgWeb.Telemetry
     end
   end
